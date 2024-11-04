@@ -1,8 +1,8 @@
 \documentclass{amsart}
 \usepackage[T1]{fontenc} % French fontenc
 \usepackage[french]{babel} % Use French as default lang
-\usepackage{mathtools}
-\usepackage{amsfonts}
+\usepackage{mathtools} % Usr amsmath commands 
+\usepackage{amssymb} % For \restriction command and math fonts
 \usepackage[backend=biber]{biblatex} % Simple bibliography usage with biber
 \addbibresource{weierstrass.bib}
 
@@ -18,11 +18,11 @@
 \begin{document}
 \begin{abstract}
 	Nous nous intéresserons au théorème d'approximation de Weierstrass et
-	à sa présentation sous diverses formes. Dans un premier temps on posera le cadre
+	à sa présentation sous diverses formes. Dans un premier temps nous poserons le cadre
 	général avec la version complexe de Stone-Weierstrass.
-	Ensuite on reprendra le cas
+	Ensuite nous reprendrons le cas
 	des séries de Fourier obtenu à l'aide du théorème de Fejer vu en cours. 
-	Puis on s'intéressera aussi au résultat sur les polynômes de Bernstein permettant
+	Puis nous développerons un résultat sur les polynômes de Bernstein permettant
 	de fournir une autre preuve constructive du théorème dans le cas réel.
 \end{abstract}
 
@@ -33,8 +33,31 @@
 \section{Théorème de Stone-Weierstrass dans le cas complexe}
 \subsection{Notions de topologie nécessaires}
 
+\par Dans cette partie nous traiterons le cas général du théorème où nous nous plaçons dans 
+un espace topologique séparé et compact. Pour cela nous développons brièvement quelques notions préliminaires pour énoncer le théorème.
+Afin de rendre la présentation plus élémentaire cette approche n'est développée que dans le présent document écrit, pour la présentation orale nous adaptons systématiquement les résultats dans le cadre des espaces vectoriels normés étudiés en cours.
 
+\begin{definition}[Espace séparé]
+	Soit \( X \) un espace topologique. X est dit \textit{séparé}, ou \textit{de Hausdorff} s'il respecte l'axiome \( T_{2} \) : pour tout points \( x \) et \( y \) dans \( X \), il existe un voisinnage \( U \) de \( x \) et \( V \) de \( y \) tels que \( U \) et \( V \) dont disjoints.
+\end{definition}
 
+En particulier tout les espaces vectoriels normés sont issus d'espaces métriques, et sont donc séparés.
+
+\begin{definition}[Algèbre, \cite{atiyah1969introduction}]
+	Soit \( A \), \( B \) deux anneaux et \( f : A \rightarrow B \) 
+	un morphisme d'anneaux. Si \( B \) est muni d'une structure de \textit{A-module}, alors B est une \textit{A-algèbre}.
+\end{definition}
+
+\begin{definition}[Sous-algèbre]
+	Soit \( B \) une \textit{A-algèbre}, et \( C \subseteq B \). 
+	\( C \) est une \textit{sous-algèbre de B} si 
+	\( {f|}_C \) est un morphisme d'anneaux 
+	et \( C \) possède une structure de \textit{A-module}. 
+	En d'autres termes, \( C \) est un \textit{sous-module} de \( B \) 
+	vu comme un \( A-module \).
+\end{definition}
+
+Ici nous nous intéressons à l'algèbre \( \mathcal{C} (X,\mathbb{C}) \) des fonctions continues de \( X \) dans \( \mathbb{C} \).
 \section{Application aux séries de Fourier}
 
 
