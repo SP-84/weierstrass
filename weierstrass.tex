@@ -4,6 +4,7 @@
 \usepackage{mathtools} % Usr amsmath commands 
 %\usepackage{amssymb} % For \restriction command and math fonts, already in mathtools
 \usepackage{enumitem} % Use Roman numbers in item enumeration
+\usepackage{csquotes} % Use correct quotations marks 
 \usepackage[backend=biber]{biblatex} % Simple bibliography usage with biber
 \addbibresource{weierstrass.bib}
 
@@ -32,12 +33,12 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 
-\section{Théorème de Stone-Weierstrass dans le cas complexe}
+\section{Théorème de Stone-Weierstrass}
 \subsection{Dans les cadre d'un espace topologique séparé}
 
 \par Dans cette partie nous traiterons le cas général du théorème où nous nous plaçons dans 
 un espace topologique séparé et compact. Pour cela nous développons brièvement quelques notions préliminaires pour énoncer le théorème.
-Afin de rendre la présentation plus proche du cours de \textit{Topologie et Analyse Hilbertienne}, cette approche n'est développée que dans le présent document écrit, pour la présentation orale nous adaptons systématiquement les résultats dans le cadre des espaces vectoriels normés étudiés en cours.
+Afin de rendre la présentation plus proche du cours de \textit{Topologie et Analyse Hilbertienne}, cette approche n'est développée que dans ce document écrit, pour la présentation orale nous adaptons systématiquement les résultats dans le cadre des espaces vectoriels normés étudiés en cours.
 
 \begin{definition}[Espace séparé]
 	Soit \( X \) un espace topologique. X est dit \textit{séparé}, ou \textit{de Hausdorff} s'il respecte l'axiome \( T_{2} \) : pour tout points \( x \) et \( y \) dans \( X \), il existe un voisinnage \( U \) de \( x \) et \( V \) de \( y \) tels que \( U \) et \( V \) sont disjoints.
@@ -72,10 +73,10 @@ pour les opérations définies sur \( \mathcal{C}(K,\mathbb{R}) \).
 De plus, en considérant la norme de la convergence uniforme sur \( \mathcal{C}(K,\mathbb{R}) \) 
 définie par \( {\left\lVert f \right\rVert_{\infty}} = \sup_{x \in K}{\left\lvert f(x) \right\rvert} \),
 alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
-Enfin, on dit que \( A \subset \mathcal{C}(K,\mathbb{R}) \) sépare les points de \( K \) si pour \( x \neq y \) dans \( K \), alors il existe une fonction \( f \in A \) telle que 
+Enfin, \( A \subset \mathcal{C}(K,\mathbb{R}) \) sépare les points de \( K \) si pour \( x \neq y \) dans \( K \), alors il existe une fonction \( f \in A \) telle que 
 \( f(x) \neq f(y) \). Avec ces outils, nous pouvons désormais énoncer le théorème.
 
-\begin{theorem}[Stone-Weierstrass sur \( \mathbb{R} \)]
+\begin{theorem}[Stone-Weierstrass, cas réel]
 	Soit \( (E,{\left\lVert . \right\rVert}) \), \( K \subseteq E \) compacte et 
 	\( A \subseteq \mathcal{C}(K,\mathbb{R}) \) une sous-algèbre vérifiant :
 	\begin{enumerate}[label = (\roman*)]
@@ -86,14 +87,35 @@ Enfin, on dit que \( A \subset \mathcal{C}(K,\mathbb{R}) \) sépare les points d
 	Alors toute fonction \( f : K \rightarrow \mathbb{R} \) est limite d'une suite de \( A \).
 \end{theorem}
 
-\par Dans le cas où l'on se place sur \( \mathbb{C} \),  
+\par La preuve que nous avions donné en cours repose dans les grandes lignes sur les éléments suivants :
+
+\begin{proof}[Schéma de la preuve]
+	\begin{enumerate}[label = (\roman*), ref=\roman*]
+		\item On montre d'abord que \( t \mapsto \sqrt(t) \) est limite uniforme sur \( [0,1] \) d'une suite de polynômes de \( A \). \label{item:i}
+		\item Ensuite on prouve que \( A \) est clos sous le passage à la valeur absolue, au sup et à l'inf d'une famille de fonctions de \( A \). \label{item:ii}
+		\item On procède par interpolation à montrer l'existence d'un "élargissement" : pour \( f \in A, \forall x,y \in K, \forall \epsilon > 0, \exists g \in \overline{A} \) telle que \\\( g_{x}(x) = f(x) \) et \( g_{x}(y) \leq f(y) + \epsilon \). \label{item:iii}
+		\item On en déduit que \( \forall\epsilon > 0, \exists g \in \overline{A} \) telle que \( {\left\lVert f-g \right\rVert_{\infty}} \le \epsilon \), ce qui implique que \( f \in \overline{\overline{A}} = \overline{A} \). \label{item:iv}
+	\end{enumerate}	
+\end{proof}
+
+\par Dans le cas où l'on se place sur \( A \subset \mathcal{C}(K,\mathbb{C}) \), nous devons ajouter quelques hypothèses supplémentaires pour obtenir le résultat : 
+\begin{enumerate}
+	\item Les étapes (\ref{item:i}) et (\ref{item:ii}) restent identiques dans le cas complexe. 
+	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), 
+		ce qui permet de décomposer \( f \in A \) en \( f = \Re(f) + i\Im(f) \) 
+		pour \( \Re(f), \Im(f) \in A|_{\mathcal{C}(K,\mathbb{R})} \), 
+		et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
+	\item Ensuite il faut également que \( A \) soit clos par addition et multiplication par un scalaire \textit{complexe}. Ceci permet de combiner \( g = \Re(f) + i\Im(f) \) 
+		et d'avoir g dans \( A \). Ce \( g \) approxime bien \( f \) uniformément.
 
 
+\end{enumerate}
 
 
 
 \section{Application aux séries de Fourier}
 
+\par Dans cette partie, \( E = \mathbb{T} = [0,2\pi] \) le cercle unité compact de \( \mathbb{R} \), \( A = Vect({\exp(inx)_{n \in \mathbb{Z}}}) \)
 
 \section{Preuve constructive à l'aide des polynômes de Bernstein}
 
