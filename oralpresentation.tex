@@ -1,0 +1,308 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 2.0 (March 8, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	11pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
+	%t, % Uncomment to vertically align all slide content to the top of the slide, rather than the default centered
+	%aspectratio=169, % Uncomment to set the aspect ratio to a 16:9 ratio which matches the aspect ratio of 1080p and 4K screens and projectors
+]{beamer}
+
+%\graphicspath{{Images/}{./}} % Specifies where to look for included images (trailing slash required)
+
+%\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule for better rules in tables
+%\usepackage{comment}
+
+\usepackage{mathtools}
+%\usepackage{amssymb} % For \restriction command and math fonts, already in mathtools
+%\usepackage{enumitem} % Use Roman numbers in item enumeration
+\usepackage{csquotes} % Use correct quotations marks 
+\usepackage[backend=biber]{biblatex} % Simple bibliography usage with biber
+\addbibresource{weierstrass.bib}
+
+\newtheorem{defi}[subsubsection]{Définition}
+\newtheorem{thm}[subsubsection]{Théorème}
+\newtheorem{corollaire}[subsubsection]{Corollaire}
+\newtheorem{lemme}[subsubsection]{Lemme}
+
+
+%----------------------------------------------------------------------------------------
+%	SELECT LAYOUT THEME
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with a number of default layout themes which change the colors and layouts of slides. Below is a list of all themes available, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+%----------------------------------------------------------------------------------------
+%	SELECT COLOR THEME
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with a number of color themes that can be applied to any layout theme to change its colors. Uncomment each of these in turn to see how they change the colors of your selected layout theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{monarca}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{spruce}
+\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%----------------------------------------------------------------------------------------
+%	SELECT FONT THEME & FONTS
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with several font themes to easily change the fonts used in various parts of the presentation. Review the comments beside each one to decide if you would like to use it. Note that additional options can be specified for several of these font themes, consult the beamer documentation for more information.
+
+\usefonttheme{default} % Typeset using the default sans serif font
+%\usefonttheme{serif} % Typeset using the default serif font (make sure a sans font isn't being set as the default font if you use this option!)
+%\usefonttheme{structurebold} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in bold
+%\usefonttheme{structureitalicserif} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in italic serif
+%\usefonttheme{structuresmallcapsserif} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in small caps serif
+
+%------------------------------------------------
+
+%\usepackage{mathptmx} % Use the Times font for serif text
+\usepackage{palatino} % Use the Palatino font for serif text
+
+%\usepackage{helvet} % Use the Helvetica font for sans serif text
+\usepackage[default]{opensans} % Use the Open Sans font for sans serif text
+%\usepackage[default]{FiraSans} % Use the Fira Sans font for sans serif text
+%\usepackage[default]{lato} % Use the Lato font for sans serif text
+
+%----------------------------------------------------------------------------------------
+%	SELECT INNER THEME
+%----------------------------------------------------------------------------------------
+
+% Inner themes change the styling of internal slide elements, for example: bullet points, blocks, bibliography entries, title pages, theorems, etc. Uncomment each theme in turn to see what changes it makes to your presentation.
+
+\useinnertheme{default}
+%\useinnertheme{circles}
+%\useinnertheme{rectangles}
+%\useinnertheme{rounded}
+%\useinnertheme{inmargin}
+
+%----------------------------------------------------------------------------------------
+%	SELECT OUTER THEME
+%----------------------------------------------------------------------------------------
+
+% Outer themes change the overall layout of slides, such as: header and footer lines, sidebars and slide titles. Uncomment each theme in turn to see what changes it makes to your presentation.
+
+%\useoutertheme{default}
+%\useoutertheme{infolines}
+%\useoutertheme{miniframes}
+%\useoutertheme{smoothbars}
+%\useoutertheme{sidebar}
+%\useoutertheme{split}
+\useoutertheme{shadow}
+%\useoutertheme{tree}
+%\useoutertheme{smoothtree}
+
+%\setbeamertemplate{footline} % Uncomment this line to remove the footer line in all slides
+\setbeamertemplate{footline}[page number] % Uncomment this line to replace the footer line in all slides with a simple slide count
+
+\setbeamertemplate{navigation symbols}{} % Uncomment this line to remove the navigation symbols from the bottom of all slides
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title[AMS]{AMS Théorème de Weierstrass} % The short title in the optional parameter appears at the bottom of every slide, the full title in the main parameter is only on the title page
+
+%\subtitle{} % Presentation subtitle, remove this command if a subtitle isn't required
+
+\author{Samy Amara et Guillaume Salloum} % Presenter name(s), the optional parameter can contain a shortened version to appear on the bottom of every slide, while the main parameter will appear on the title slide
+
+\institute[AMS]{Avignon Université \\ \smallskip L3 Mathématiques} % Your institution, the optional parameter can be used for the institution shorthand and will appear on the bottom of every slide after author names, while the required parameter is used on the title slide and can include your email address or additional information on separate lines
+
+\date{} % Presentation date or conference/meeting name, the optional parameter can contain a shortened version to appear on the bottom of every slide, while the required parameter value is output to the title slide
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SLIDE
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\titlepage % Output the title slide, automatically created using the text entered in the PRESENTATION INFORMATION block above
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS SLIDE
+%----------------------------------------------------------------------------------------
+
+% The table of contents outputs the sections and subsections that appear in your presentation, specified with the standard \section and \subsection commands. You may either display all sections and subsections on one slide with \tableofcontents, or display each section at a time on subsequent slides with \tableofcontents[pausesections]. The latter is useful if you want to step through each section and mention what you will discuss.
+
+\begin{frame}
+	\frametitle{Plan} % Slide title, remove this command for no title
+	
+	\tableofcontents % Output the table of contents (all sections on one slide)
+	%\tableofcontents[pausesections] % Output the table of contents (break sections up across separate slides)
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION BODY SLIDES
+%----------------------------------------------------------------------------------------
+
+\section{Théorème de Stone-Weierstrass et application aux séries de Fourier} % Sections are added in order to organize your presentation into discrete blocks, all sections and subsections are automatically output to the table of contents as an overview of the talk but NOT output in the presentation as separate slides
+
+%------------------------------------------------
+
+\subsection{Rappels}
+
+\begin{frame}
+	\frametitle{Rappels}
+
+	D'après le cours de \textit{Topologie et Analyse Hilbertienne}, nous avons vu que pour 
+\((E, {\left\lVert . \right\rVert})\) un espace vectoriel normé et \( K \subseteq E \) compacte, alors :
+\begin{itemize}
+	\item \( \mathcal{C}(K,\mathbb{R}) \) l'ensemble des fonctions continues de \( K \) dans \( \mathbb{R} \) a une structure d'algèbre sur \( \mathbb{R} \). 
+	\item \( A \subset \mathcal{C}(K,\mathbb{R}) \) est une sous-algèbre si elle est stable 
+pour les opérations définies sur \( \mathcal{C}(K,\mathbb{R}) \).
+	\item En considérant la norme de la convergence uniforme sur \( \mathcal{C}(K,\mathbb{R}) \) 
+définie par \( {\left\lVert f \right\rVert_{\infty}} = \sup_{x \in K}{\left\lvert f(x) \right\rvert} \),
+alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
+	\item \( A \subset \mathcal{C}(K,\mathbb{R}) \) sépare les points de \( K \) si pour \( x \neq y \) dans \( K \), alors il existe une fonction \( f \in A \) telle que 
+\( f(x) \neq f(y) \).
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+	%\frametitle{Introduction}
+
+
+\begin{thm}[Stone-Weierstrass, cas réel]
+	Soit \( (E,{\left\lVert . \right\rVert}) \), \( K \subseteq E \) compacte et 
+	\( A \subseteq \mathcal{C}(K,\mathbb{R}) \) une sous-algèbre vérifiant :
+	\begin{enumerate}
+		\item A contient les constantes,
+		\item A sépare les points,
+		\item \( \overline{A} = \mathcal{C}(K,\mathbb{R}) \)
+	\end{enumerate}
+	Alors toute fonction \( f : K \rightarrow \mathbb{R} \) est limite d'une suite de \( A \).
+\end{thm}
+\end{frame}
+%------------------------------------------------
+
+\begin{frame}
+\begin{proof}[Schéma de la preuve]
+	\begin{enumerate}
+		\item On montre d'abord que \( t \mapsto \sqrt(t) \) est limite uniforme sur \( [0,1] \) d'une suite de polynômes de \( A \). \label{item:i}
+		\item Ensuite on prouve que \( A \) est clos sous le passage à la valeur absolue, au sup et à l'inf d'une famille de fonctions de \( A \). \label{item:ii}
+		\item On procède par interpolation à montrer l'existence d'un "élargissement" : pour \( f \in A, \forall x,y \in K, \forall \epsilon > 0, \exists g \in \overline{A} \) telle que \\\( g_{x}(x) = f(x) \) et \( g_{x}(y) \leq f(y) + \epsilon \). \label{item:iii}
+		\item On en déduit que \( \forall\epsilon > 0, \exists g \in \overline{A} \) telle que \( {\left\lVert f-g \right\rVert_{\infty}} \le \epsilon \), ce qui implique que \( f \in \overline{\overline{A}} = \overline{A} \). \label{item:iv}
+	\end{enumerate}	
+\end{proof}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\par Dans le cas où l'on se place sur \( A \subset \mathcal{C}(K,\mathbb{C}) \) :
+\begin{itemize}
+	\item Les étapes (\ref{item:i}) et (\ref{item:ii}) restent identiques dans le cas complexe.
+	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), ce qui permet de décomposer \( f \) en \( f = \Re(f) + i\Im(f) \) pour \( \Re(f), \Im(f) \in A|_{\mathcal{C}(K,\mathbb{R})} \) et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
+	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir g dans \( A \). Ce \( g \) approxime bien \( f \) uniformément.
+
+\end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}
+\subsection{Application directe aux séries de Fourier}
+\frametitle{Application directe aux séries de Fourier}
+
+\par Dans cette partie, \( E = \mathbb{T} = [0,2\pi] \) le cercle unité compact de \( \mathbb{R} \), \( A = Vect({\exp(inx)_{n \in \mathbb{Z}}}) \)
+
+\end{frame}
+%------------------------------------------------
+
+
+\section{Preuve constructive à l'aide des polynômes de Bernstein}
+\begin{frame}
+
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}[allowframebreaks] % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
+	\frametitle{Références}
+	
+	{\footnotesize
+	\printbibliography}
+	 % Beamer does not support BibTeX so references must be inserted manually as below, you may need to use multiple columns and/or reduce the font size further if you have many references
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	CLOSING SLIDE
+%----------------------------------------------------------------------------------------
+
+%\begin{frame}[plain] % The optional argument 'plain' hides the headline and footline
+%	\begin{center}
+%		{\Huge The End}
+		
+%		\bigskip\bigskip % Vertical whitespace
+		
+%		{\LARGE Questions? Comments?}
+%	\end{center}
+%\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
