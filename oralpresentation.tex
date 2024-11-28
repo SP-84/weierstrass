@@ -33,7 +33,7 @@
 %\usepackage{amssymb} % For \restriction command and math fonts, already in mathtools
 %\usepackage{enumitem} % Use Roman numbers in item enumeration
 \usepackage{csquotes} % Use correct quotations marks 
-\usepackage[backend=biber]{biblatex} % Simple bibliography usage with biber
+\usepackage[backend=biber, style=authoryear]{biblatex} % Simple bibliography usage with biber
 \addbibresource{weierstrass.bib}
 
 \newtheorem{defi}[subsubsection]{Définition}
@@ -257,7 +257,7 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 	\item Les étapes (\ref{item:i}) et (\ref{item:ii}) restent identiques.
 	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), ce qui permet de décomposer \( f \) en \( f = \Re(f) + i\Im(f) \) avec \( \Re(f) = \frac{f + \overline{f}}{2}\in A|_{\mathcal{C}(K,\mathbb{R})}, \Im(f) = \frac{f - \overline{f}}{2i} \in A|_{\mathcal{C}(K,\mathbb{R})} \) et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
 	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément i.e. \( A \) est dense dans \( \mathcal{C}(K,\mathbb{C}) = \mathcal{C}(K,\mathbb{R}) + i\mathcal{C}(K,\mathbb{R}) \).
-\cite{stephenson1968spaces}
+\nocite{stephenson1968spaces}
 
 \end{itemize}
 \end{frame}
@@ -285,22 +285,32 @@ On en déduit le théorème de Weierstrass trigonométrique : \( A \) est dense 
 
 \section{Preuve constructive à l'aide du noyau de Poisson}
 \begin{frame}
-\frametitle{Preuve constructive à l'aide du noyau de Poisson}
+%\frametitle{Preuve constructive à l'aide du noyau de Poisson}
 
-Picard démontre dans son \textit{Traité d'Analyse} (1891) le théorème de Weierstrass en utilisant le noyau de Poisson. \cite{pinkus2000approximation}
-\begin{defi}[Noyau de Poisson]
-		Soit \( f \) continue et \( 2\pi \) périodique sur \( \mathbb{R} \) (donc uniformément continue). Pour \( 0 \leq r \leq 1 \), on définit l'intégrale de Poisson de \( f \) par :
+Picard démontre dans son \textit{Traité d'Analyse} (1891) le théorème de Weierstrass en utilisant le noyau de Poisson. 
+\begin{defi}[Noyau de Poisson, Intégrale de Poisson]
+	Pour \( 0 \leq r \leq 1 \), on définit le noyau de Poisson sur le disque unité de \( \mathbb{C} \) par
 \begin{equation*}
-	P(r,\theta) = \frac{1}{2\pi} \int_0^{2\pi} 
-	\frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}} f(x) \, dx
+	K(r,\theta) = \frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}} = \Re(\frac{1 + re^{i\theta}}{1 - re^{i\theta}})
 \end{equation*}
 
-C'est un \textit{opérateur intégral} sur l'espace fonctionnel \( \mathcal{C}([0,2\pi],\mathbb{R}) \).
+Soit \( f \) continue et \( 2\pi\)-périodique, \( f \) est uniformément continue par le théorème de Heine. Si \( f \in L^{1}(\mathcal{S}^{2}(\mathbb{R})) \), l'intégrale de Poisson de \( f \) est donnée par :
+\begin{equation*}
+	P(r,\theta) = \frac{1}{2\pi} \int_0^{2\pi} 
+	K(r,\theta) f(x) \, dx
+\end{equation*}
+C'est un opérateur intégral de \( \mathcal{C}([0,2\pi],\mathbb{R}) \) dans \( \mathcal{C}([0,2\pi],\mathbb{R}) \) de noyau de Poisson \( K \). \nocite{pinkus2000approximation}
+
 	\end{defi}
 \end{frame}
 
 %------------------------------------------------
+\begin{frame}
+	\center\includegraphics[width=6.8cm]{poissonkernel.png}
+\end{frame}
 
+
+%------------------------------------------------
 
 \begin{frame}[allowframebreaks] % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
 	\frametitle{Références}
