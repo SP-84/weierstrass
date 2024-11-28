@@ -48,7 +48,7 @@
 
 % Beamer comes with a number of default layout themes which change the colors and layouts of slides. Below is a list of all themes available, uncomment each in turn to see what they look like.
 
-%\usetheme{default}
+\usetheme{default}
 %\usetheme{AnnArbor}
 %\usetheme{Antibes}
 %\usetheme{Bergen}
@@ -57,7 +57,7 @@
 %\usetheme{Boadilla}
 %\usetheme{CambridgeUS}
 %\usetheme{Copenhagen}
-\usetheme{Darmstadt}
+%\usetheme{Darmstadt}
 %\usetheme{Dresden}
 %\usetheme{Frankfurt}
 %\usetheme{Goettingen}
@@ -86,7 +86,7 @@
 %\usecolortheme{beaver}
 %\usecolortheme{beetle}
 %\usecolortheme{crane}
-%\usecolortheme{dolphin}
+\usecolortheme{dolphin}
 %\usecolortheme{dove}
 %\usecolortheme{fly}
 %\usecolortheme{lily}
@@ -94,7 +94,7 @@
 %\usecolortheme{seagull}
 %\usecolortheme{seahorse}
 %\usecolortheme{spruce}
-\usecolortheme{whale}
+%\usecolortheme{whale}
 %\usecolortheme{wolverine}
 
 %----------------------------------------------------------------------------------------
@@ -125,10 +125,10 @@
 
 % Inner themes change the styling of internal slide elements, for example: bullet points, blocks, bibliography entries, title pages, theorems, etc. Uncomment each theme in turn to see what changes it makes to your presentation.
 
-\useinnertheme{default}
+%\useinnertheme{default}
 %\useinnertheme{circles}
 %\useinnertheme{rectangles}
-%\useinnertheme{rounded}
+\useinnertheme{rounded}
 %\useinnertheme{inmargin}
 
 %----------------------------------------------------------------------------------------
@@ -137,18 +137,18 @@
 
 % Outer themes change the overall layout of slides, such as: header and footer lines, sidebars and slide titles. Uncomment each theme in turn to see what changes it makes to your presentation.
 
-%\useoutertheme{default}
+\useoutertheme{default}
 %\useoutertheme{infolines}
 %\useoutertheme{miniframes}
 %\useoutertheme{smoothbars}
 %\useoutertheme{sidebar}
 %\useoutertheme{split}
-\useoutertheme{shadow}
+%\useoutertheme{shadow}
 %\useoutertheme{tree}
 %\useoutertheme{smoothtree}
 
 %\setbeamertemplate{footline} % Uncomment this line to remove the footer line in all slides
-\setbeamertemplate{footline}[page number] % Uncomment this line to replace the footer line in all slides with a simple slide count
+\setbeamertemplate{footline}% Uncomment this line to replace the footer line in all slides with a simple slide count
 
 \setbeamertemplate{navigation symbols}{} % Uncomment this line to remove the navigation symbols from the bottom of all slides
 
@@ -160,9 +160,9 @@
 
 %\subtitle{} % Presentation subtitle, remove this command if a subtitle isn't required
 
-\author{Samy Amara et Guillaume Salloum} % Presenter name(s), the optional parameter can contain a shortened version to appear on the bottom of every slide, while the main parameter will appear on the title slide
+\author{Samy Amara, Guillaume Salloum} % Presenter name(s), the optional parameter can contain a shortened version to appear on the bottom of every slide, while the main parameter will appear on the title slide
 
-\institute[AMS]{Avignon Université \\ \smallskip L3 Mathématiques} % Your institution, the optional parameter can be used for the institution shorthand and will appear on the bottom of every slide after author names, while the required parameter is used on the title slide and can include your email address or additional information on separate lines
+\institute{Avignon Université \\ \smallskip L3 Mathématiques} % Your institution, the optional parameter can be used for the institution shorthand and will appear on the bottom of every slide after author names, while the required parameter is used on the title slide and can include your email address or additional information on separate lines
 
 \date{} % Presentation date or conference/meeting name, the optional parameter can contain a shortened version to appear on the bottom of every slide, while the required parameter value is output to the title slide
 
@@ -195,7 +195,7 @@
 %	PRESENTATION BODY SLIDES
 %----------------------------------------------------------------------------------------
 
-\section{Théorème de Stone-Weierstrass et application aux séries de Fourier} % Sections are added in order to organize your presentation into discrete blocks, all sections and subsections are automatically output to the table of contents as an overview of the talk but NOT output in the presentation as separate slides
+\section{Théorème de Stone-Weierstrass} % Sections are added in order to organize your presentation into discrete blocks, all sections and subsections are automatically output to the table of contents as an overview of the talk but NOT output in the presentation as separate slides
 
 %------------------------------------------------
 
@@ -251,11 +251,12 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 %------------------------------------------------
 
 \begin{frame}
+	\frametitle{Preuve du cas complexe}
 \par Dans le cas où l'on se place sur \( A \subset \mathcal{C}(K,\mathbb{C}) \) :
 \begin{itemize}
-	\item Les étapes (\ref{item:i}) et (\ref{item:ii}) restent identiques dans le cas complexe.
-	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), ce qui permet de décomposer \( f \) en \( f = \Re(f) + i\Im(f) \) pour \( \Re(f), \Im(f) \in A|_{\mathcal{C}(K,\mathbb{R})} \) et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
-	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir g dans \( A \). Ce \( g \) approxime bien \( f \) uniformément.
+	\item Les étapes (\ref{item:i}) et (\ref{item:ii}) restent identiques.
+	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), ce qui permet de décomposer \( f \) en \( f = \Re(f) + i\Im(f) \) avec \( \Re(f), \Im(f) \in A|_{\mathcal{C}(K,\mathbb{R})} \) et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
+	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément.
 
 \end{itemize}
 \end{frame}
@@ -266,7 +267,14 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 \subsection{Application directe aux séries de Fourier}
 \frametitle{Application directe aux séries de Fourier}
 
-\par Dans cette partie, \( E = \mathbb{T} = [0,2\pi] \) le cercle unité compact de \( \mathbb{R} \), \( A = Vect({\exp(inx)_{n \in \mathbb{Z}}}) \)
+\par Soit \( E = \mathbb{T} = [0,2\pi] \) le cercle unité compact de \( \mathbb{R} \), \(A = Vect(\{e^{inx}\}_{n \in \mathbb{Z}})\) est une base de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \). Montrons que \( A \) vérifie les hypothèses du théorème :
+\begin{itemize}
+	\item A clos par \( +,\times,. \) donc est une sous-algèbre de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \)
+	\item A contient les constantes (\( e^{i.0.x} = 1) \)
+	\item \( \overline{e^{inx}} = e^{-inx} \in A \) car \( n \in \mathbb{Z} \)
+	\item Pour \( x1, x2 \in A \) distincts, il existe \( n \in \mathbb{Z} \) tel que 
+		\( e^{inx1} \neq e^{inx2} \)
+\end{itemize}
 
 \end{frame}
 %------------------------------------------------
