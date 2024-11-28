@@ -255,8 +255,9 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 \par Dans le cas où l'on se place sur \( A \subset \mathcal{C}(K,\mathbb{C}) \) :
 \begin{itemize}
 	\item Les étapes (\ref{item:i}) et (\ref{item:ii}) restent identiques.
-	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), ce qui permet de décomposer \( f \) en \( f = \Re(f) + i\Im(f) \) avec \( \Re(f), \Im(f) \in A|_{\mathcal{C}(K,\mathbb{R})} \) et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
-	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément.
+	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), ce qui permet de décomposer \( f \) en \( f = \Re(f) + i\Im(f) \) avec \( \Re(f) = \frac{f + \overline{f}}{2}\in A|_{\mathcal{C}(K,\mathbb{R})}, \Im(f) = \frac{f - \overline{f}}{2i} \in A|_{\mathcal{C}(K,\mathbb{R})} \) et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
+	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément i.e. \( A \) est dense dans \( \mathcal{C}(K,\mathbb{C}) = \mathcal{C}(K,\mathbb{R}) + i\mathcal{C}(K,\mathbb{R}) \).
+\cite{stephenson1968spaces}
 
 \end{itemize}
 \end{frame}
@@ -267,22 +268,35 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 \subsection{Application directe aux séries de Fourier}
 \frametitle{Application directe aux séries de Fourier}
 
-\par Soit \( E = \mathbb{T} = [0,2\pi] \) le cercle unité compact de \( \mathbb{R} \), \(A = Vect(\{e^{inx}\}_{n \in \mathbb{Z}})\) est une base de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \). Montrons que \( A \) vérifie les hypothèses du théorème :
+\par Soit \( E = \mathbb{T} = [0,2\pi] \) le cercle unité compact de \( \mathbb{R} \), \(A = Vect(\{e^{inx}\}_{n \in \mathbb{Z}})\) est une base orthonormale de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \). Montrons que \( A \) vérifie les hypothèses du théorème :
 \begin{itemize}
 	\item A clos par \( +,\times,. \) donc est une sous-algèbre de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \)
 	\item A contient les constantes (\( e^{i.0.x} = 1) \)
 	\item \( \overline{e^{inx}} = e^{-inx} \in A \) car \( n \in \mathbb{Z} \)
 	\item Pour \( x1, x2 \in A \) distincts, il existe \( n \in \mathbb{Z} \) tel que 
-		\( e^{inx1} \neq e^{inx2} \)
+		\( e^{inx1} \neq e^{inx2} \).
 \end{itemize}
+
+On en déduit le théorème de Weierstrass trigonométrique : \( A \) est dense dans \( \mathcal{C}(\mathbb{T},\mathbb{C}) \).
 
 \end{frame}
 %------------------------------------------------
 
 
-\section{Preuve constructive à l'aide des polynômes de Bernstein}
+\section{Preuve constructive à l'aide du noyau de Poisson}
 \begin{frame}
+\frametitle{Preuve constructive à l'aide du noyau de Poisson}
 
+Picard démontre dans son \textit{Traité d'Analyse} (1891) le théorème de Weierstrass en utilisant le noyau de Poisson. \cite{pinkus2000approximation}
+\begin{defi}[Noyau de Poisson]
+		Soit \( f \) continue et \( 2\pi \) périodique sur \( \mathbb{R} \) (donc uniformément continue). Pour \( 0 \leq r \leq 1 \), on définit l'intégrale de Poisson de \( f \) par :
+\begin{equation*}
+	P(r,\theta) = \frac{1}{2\pi} \int_0^{2\pi} 
+	\frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}} f(x) \, dx
+\end{equation*}
+
+C'est un \textit{opérateur intégral} sur l'espace fonctionnel \( \mathcal{C}([0,2\pi],\mathbb{R}) \).
+	\end{defi}
 \end{frame}
 
 %------------------------------------------------
