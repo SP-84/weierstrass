@@ -19,7 +19,7 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[
-	11pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
+	10pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
 	%t, % Uncomment to vertically align all slide content to the top of the slide, rather than the default centered
 	%aspectratio=169, % Uncomment to set the aspect ratio to a 16:9 ratio which matches the aspect ratio of 1080p and 4K screens and projectors
 ]{beamer}
@@ -32,7 +32,7 @@
 \usepackage{mathtools}
 %\usepackage{amssymb} % For \restriction command and math fonts, already in mathtools
 %\usepackage{enumitem} % Use Roman numbers in item enumeration
-\usepackage{csquotes} % Use correct quotations marks 
+%\usepackage{csquotes} % Use correct quotations marks 
 \usepackage[backend=biber, style=authoryear]{biblatex} % Simple bibliography usage with biber
 \addbibresource{weierstrass.bib}
 
@@ -48,7 +48,7 @@
 
 % Beamer comes with a number of default layout themes which change the colors and layouts of slides. Below is a list of all themes available, uncomment each in turn to see what they look like.
 
-\usetheme{default}
+%\usetheme{default}
 %\usetheme{AnnArbor}
 %\usetheme{Antibes}
 %\usetheme{Bergen}
@@ -65,7 +65,7 @@
 %\usetheme{Ilmenau}
 %\usetheme{JuanLesPins}
 %\usetheme{Luebeck}
-%\usetheme{Madrid}
+\usetheme{Madrid}
 %\usetheme{Malmoe}
 %\usetheme{Marburg}
 %\usetheme{Montpellier}
@@ -289,12 +289,12 @@ On en déduit le théorème de Weierstrass trigonométrique : \( A \) est dense 
 
 Picard démontre dans son \textit{Traité d'Analyse} (1891) le théorème de Weierstrass en utilisant le noyau de Poisson. 
 \begin{defi}[Noyau de Poisson, Intégrale de Poisson]
-	Pour \( 0 \leq r \leq 1 \), on définit le noyau de Poisson sur le disque unité de \( \mathbb{C} \) par
+	Soit \( \mathcal{D} \) et \( \mathcal{S} \) le disque unité et la sphère unité de \( \mathbb{C} \) respectivement. Pour \( 0 \leq r \leq 1 \), on définit le noyau de Poisson sur \( \mathcal{S} \) par :
 \begin{equation*}
 	K(r,\theta) = \frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}} = \Re(\frac{1 + re^{i\theta}}{1 - re^{i\theta}})
 \end{equation*}
 
-Soit \( f \) continue et \( 2\pi\)-périodique, \( f \) est uniformément continue par le théorème de Heine. Si \( f \in L^{1}(\mathcal{S}^{2}(\mathbb{R})) \), l'intégrale de Poisson de \( f \) est donnée par :
+Soit \( f \) continue et \( 2\pi\)-périodique, \( f \) est uniformément continue par le théorème de Heine. Si \( f \in L^{1}(\mathcal{S}) \), l'intégrale de Poisson de \( f \) est donnée par :
 \begin{equation*}
 	P(r,\theta) = \frac{1}{2\pi} \int_0^{2\pi} 
 	K(r,\theta) f(x) \, dx
@@ -311,8 +311,34 @@ C'est un opérateur intégral de \( \mathcal{C}([0,2\pi],\mathbb{R}) \) dans \( 
 
 
 %------------------------------------------------
+\begin{frame}
+%\frametitle{Conséquence sur la densité des polynômes trigonométriques dans \( \mathcal{C}([0,2\pi],\mathbb{R}) \) }
+	Soit \( S_f \) la série de Fourier de \( f \). En particulier la série de Fourier de \( P(r,\theta) \) est donnée par :
+	\[
+		S_{P(r,\theta)} = \frac{a_0}{2} + 
+		\sum_{n=1}^{\infty} r^{n} \left[ a_n \cos nx + b_n \sin nx \right]
+	\]
 
-\begin{frame}[allowframebreaks] % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
+	Puisque \( a_n \) et \( b_n \) sont uniformément bornées, \( S_{P(r,\theta)} \) converge uniformément vers \( P(r,\theta) \) pour tout \( r \le 1 \). Il existe alors \( m \in \mathbb{N} \) tel que pour tout \( \theta \) 
+	\begin{equation*}
+		{\left\lvert P(r_1,\theta) - 
+		\lbrack \frac{a_0}{2} + \sum_{n=1}^{m} r_1^{n}(a_n \cos nx + b_n \sin nx) \rbrack \right\rvert} < \epsilon
+	\end{equation*}
+
+	Fixons
+	\begin{equation*}
+		g(\theta) = \frac{a_0}{2} + \sum_{n=1}^{m} r_1^{n}(a_n \cos nx + b_n \sin nx) 
+	\end{equation*}
+
+	Nous avons explicité un polynôme trigonométrique satisfaisant pour tout \( \theta \) et pour \( \epsilon > 0 \)
+	\begin{equation*}
+		{\left\lvert f(\theta) - g(\theta) \right\rvert} < 3\epsilon
+	\end{equation*}
+	On en déduit la densité des polynômes trigonométriques dans \( \mathcal{C}([0,2\pi],\mathbb{R}) \) pour \( {\left\lVert . \right\rVert}_{\infty} \).
+\end{frame}
+%------------------------------------------------
+
+\begin{frame} % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
 	\frametitle{Références}
 	
 	{\footnotesize
