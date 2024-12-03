@@ -30,10 +30,12 @@
 %\usepackage{comment}
 
 \usepackage{mathtools}
+\usepackage{xcolor} % Use mathcolor to highlight symbols
+\usepackage[colorlinks, colorlinks=blue]{hyperref} % Use hyprlinks
 %\usepackage{amssymb} % For \restriction command and math fonts, already in mathtools
 %\usepackage{enumitem} % Use Roman numbers in item enumeration
 %\usepackage{csquotes} % Use correct quotations marks 
-\usepackage[backend=biber, style=authoryear]{biblatex} % Simple bibliography usage with biber
+\usepackage[backend=biber, style=alphabetic]{biblatex} % Simple bibliography usage with biber
 \addbibresource{weierstrass.bib}
 
 \newtheorem{defi}[subsubsection]{Définition}
@@ -167,7 +169,7 @@
 \date{} % Presentation date or conference/meeting name, the optional parameter can contain a shortened version to appear on the bottom of every slide, while the required parameter value is output to the title slide
 
 %----------------------------------------------------------------------------------------
-
+\renewcommand*{\bibfont}{\fontsize{8}{12}\selectfont}
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -256,8 +258,9 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 \begin{itemize}
 	\item Les étapes (\ref{item:i}) et (\ref{item:ii}) restent identiques.
 	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), ce qui permet de décomposer \( f \) en \( f = \Re(f) + i\Im(f) \) avec \( \Re(f) = \frac{f + \overline{f}}{2}\in A|_{\mathcal{C}(K,\mathbb{R})}, \Im(f) = \frac{f - \overline{f}}{2i} \in A|_{\mathcal{C}(K,\mathbb{R})} \) et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
-	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément i.e. \( A \) est dense dans \( \mathcal{C}(K,\mathbb{C}) = \mathcal{C}(K,\mathbb{R}) + i\mathcal{C}(K,\mathbb{R}) \).
-\nocite{stephenson1968spaces}
+	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément 
+		
+		i.e. \( A \) est dense dans \( \mathcal{C}(K,\mathbb{C}) = \mathcal{C}(K,\mathbb{R}) + i\mathcal{C}(K,\mathbb{R}) \) (voir \cite{stephenson1968spaces})
 
 \end{itemize}
 \end{frame}
@@ -285,28 +288,29 @@ On en déduit le théorème de Weierstrass trigonométrique : \( A \) est dense 
 
 \section{Preuve constructive à l'aide du noyau de Poisson}
 \begin{frame}
-%\frametitle{Preuve constructive à l'aide du noyau de Poisson}
+\frametitle{Preuve constructive à l'aide du noyau de Poisson}
 
-Picard démontre dans son \textit{Traité d'Analyse} (1891) le théorème de Weierstrass en utilisant le noyau de Poisson. 
+Picard démontre dans son \textit{Traité d'Analyse} (1891) le théorème de Weierstrass en utilisant le noyau de Poisson d'après \cite{pinkus2000approximation}.
+ 
 \begin{defi}[Noyau de Poisson, Intégrale de Poisson]
-	Soit \( \mathcal{D} \) et \( \mathcal{S} \) le disque unité et la sphère unité de \( \mathbb{C} \) respectivement. Pour \( 0 \leq r \leq 1 \), on définit le noyau de Poisson sur \( \mathcal{S} \) par :
+	Soit \( \mathcal{D} \), \( \mathcal{S} \) le disque unité et la sphère unité de \( \mathbb{C} \) respectivement. Pour \( 0 \leq r \leq 1 \), on définit le noyau de Poisson sur \( \mathcal{S} \) par :
 \begin{equation*}
 	K(r,\theta) = \frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}} = \Re(\frac{1 + re^{i\theta}}{1 - re^{i\theta}})
 \end{equation*}
 
-Soit \( f \) continue et \( 2\pi\)-périodique, \( f \) est uniformément continue par le théorème de Heine. Si \( f \in L^{1}(\mathcal{S}) \), l'intégrale de Poisson de \( f \) est donnée par :
+Soit \( f \) continue et \( 2\pi\)-périodique sur \( \mathbb{R} \), \( f \) est uniformément continue par le théorème de Heine : pour \( \epsilon > 0 \) il existe \( \delta > 0 \) tel que pour \( {\left\lvert x - \theta \right\rvert} < \delta \) on a \( {\left\lvert f(x) - f(\theta) \right\rvert} < \epsilon \). L'intégrale de Poisson de \( f \) est alors donnée par :
 \begin{equation*}
 	P(r,\theta) = \frac{1}{2\pi} \int_0^{2\pi} 
 	K(r,\theta) f(x) \, dx
 \end{equation*}
-C'est un opérateur intégral de \( \mathcal{C}([0,2\pi],\mathbb{R}) \) dans \( \mathcal{C}([0,2\pi],\mathbb{R}) \) de noyau de Poisson \( K \). \nocite{pinkus2000approximation}
+C'est un opérateur intégral défini sur \( \mathcal{C}([0,2\pi],\mathbb{R}) \), de noyau de Poisson \( K \). \nocite{pinkus2000approximation}
 
 	\end{defi}
 \end{frame}
 
 %------------------------------------------------
 \begin{frame}
-	\center\includegraphics[width=6.8cm]{poissonkernel.png}
+	\center\includegraphics[width=6.5cm]{poissonkernel.png}
 \end{frame}
 
 
@@ -337,12 +341,89 @@ C'est un opérateur intégral de \( \mathcal{C}([0,2\pi],\mathbb{R}) \) dans \( 
 	On en déduit la densité des polynômes trigonométriques dans \( \mathcal{C}([0,2\pi],\mathbb{R}) \) pour \( {\left\lVert . \right\rVert}_{\infty} \).
 \end{frame}
 %------------------------------------------------
+\begin{frame}
+	\section{Preuve constructive à l'aide des polynômes de Bernstein}
+	\frametitle{Preuve constructive à l'aide des polynômes de Bernstein}
+
+	Cette preuve est dûe à Bernstein (1912/1913) d'après \cite{pinkus2000approximation}.
+	\begin{defi}[Polynôme de Bernstein de f]
+		Soit \( f \in \mathcal{C}([0,1],\mathbb{R}) \). Le polynôme de Bernstein de \( f \) est donné par :
+	\begin{equation*}
+		B_n(x) = \sum_{m=0}^{n} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m}
+	\end{equation*}
+	\end{defi}
+Montrons que \( B_n \) converge uniformément vers \( f \) sur \( [0,1] \).
+
+
+	Puisque \( f \in \mathcal{C}([0,1],\mathbb{R}) \), étant donné \( \epsilon > 0 \) il existe un \( \delta > 0 \) tel que :
+	\begin{equation*}
+		{\left\lvert x - y\right\rvert} < \delta
+	\end{equation*}
+	ce qui implique que pour tout \( x, y \in [0,1] \) on a 
+	\begin{equation*}
+		{\left\lvert f(x) - f(y) \right\rvert} < \frac{\epsilon}{2}
+	\end{equation*}
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+	Posons 
+	\begin{equation*}
+		\overline{f}(x) = \max\{f(y) \mid y \in [x-\delta, x+\delta] \cap [0,1]\}
+	\end{equation*}
+	\begin{equation*}
+		\underline{f}(x) = \min\{f(y) \mid y \in [x-\delta, x+\delta] \cap [0,1]\}
+	\end{equation*}
+
+Alors on a : 
+\begin{equation*}
+	0 \leq \overline{f}(x) - f(x) < \frac{\epsilon}{2}
+\end{equation*}
+\begin{equation*}
+	0 \leq f(x) - \underline{f}(x) < \frac{\epsilon}{2}
+\end{equation*}
+Pour \( \delta > 0  \) fixé, en posant :
+\begin{equation*}
+	\eta_n(x) = \sum_{\{m \in \mathbb{N} \mid x - (m/n) \leq \delta \}} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m}
+\end{equation*}
+
+On décompose \( B_n(x) \) en 
+\begin{align*}
+	B_n(x) &= \sum_{m=0}^{n} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m} \\
+	       &= \sum_{\{m \in \mathbb{N} \mid x - (m/n) \mathcolor{red}{\leq} \delta \}} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m} \\
+	       &+ \sum_{\{m \in \mathbb{N} \mid x - (m/n) \mathcolor{red}{>} \delta \}} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m} \\
+\end{align*}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+	D'où 
+	\begin{equation}
+		\underline{f}(x)[1 - \eta_n(x)] - {\left\lVert f \right\rVert} \eta_n(x)
+		\leq B_n(x) \leq \overline{f}(x)[1-\eta_n(x)] + {\left\lVert f \right\rVert} \eta_n(x) \label{eq:E}
+	\end{equation}
+	D'après un résultat dû à Bernouilli que l'on admet (voir preuve dans \cite{pinkus2000approximation}), il existe un \( N \) tel que pour tout \( n > N \) et pour tout \( x \in [0,1] \) on a :
+	\begin{equation}
+		\eta_n(x) < \frac{\epsilon}{4 {\left\lVert f \right\rVert}} \label{eq:B}
+	\end{equation}
+	Par conséquent, en ajoutant \( f(x) - f(x) \) et en regroupant dans \( \eqref{eq:E} \) on a
+	\begin{equation*}
+		f(x)-\frac{\epsilon}{2} - 
+		\frac{\epsilon}{4 {\left\lVert f \right\rVert}} 2{\left\lVert f \right\rVert}
+		< B_n(x) < f(x) + \frac{\epsilon}{2}+\frac{\epsilon}{4 {\left\lVert f \right\rVert}} 2{\left\lVert f \right\rVert}
+	\end{equation*}
+
+	ce qui donne pour tout \( x \in [0,1] \)
+	\begin{equation*}
+		{\left\lvert B_n(x) - f(x) \right\rvert} < \epsilon
+	\end{equation*}
+	\end{frame}
+%------------------------------------------------
+
 
 \begin{frame} % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
 	\frametitle{Références}
 	
-	{\footnotesize
-	\printbibliography}
+	\printbibliography
 	 % Beamer does not support BibTeX so references must be inserted manually as below, you may need to use multiple columns and/or reduce the font size further if you have many references
 
 \end{frame}
