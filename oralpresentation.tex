@@ -173,7 +173,7 @@
 \date{} % Presentation date or conference/meeting name, the optional parameter can contain a shortened version to appear on the bottom of every slide, while the required parameter value is output to the title slide
 
 %----------------------------------------------------------------------------------------
-\renewcommand*{\bibfont}{\fontsize{8.5}{12}\selectfont}
+\renewcommand*{\bibfont}{\fontsize{8}{12}\selectfont}
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -312,9 +312,69 @@ C'est un opérateur intégral défini sur \( \mathcal{C}([0,2\pi],\mathbb{R}) \)
 
 %------------------------------------------------
 \begin{frame}
-	\center\includegraphics[width=6.5cm]{poissonkernel.png}
-\end{frame}
+	%\center\includegraphics[width=6.5cm]{poissonkernel.png}
+	\begin{lemme}
+		Montrons que 
+	\begin{equation*}
+		{\left\lvert P(r,\theta) - f(\theta) \right\rvert} < \epsilon + 
+		\frac{{\left\lVert f \right\rVert}(1-r^{2})}{r(1-\cos\delta)}
+	\end{equation*}
+	\end{lemme}
 
+	Tout d'abord :
+	{\footnotesize
+		\begin{align*}
+		P(r,\theta)-f(\theta) &= \frac{1}{2\pi} \int_0^{2\pi}
+		\frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}}
+		\lbrack f(x)-f(\theta) \rbrack \, dx \\
+				      &= \frac{1}{2\pi} \int_{\mathcolor{red}{{\left\lvert x - \theta \right\rvert} < \delta}} 
+		\frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}}
+		\lbrack f(x)-f(\theta) \rbrack \, dx \\
+				      &+ \frac{1}{2\pi} \int_{\mathcolor{red}{{\delta \leq \left\lvert x - \theta \right\rvert} \leq \pi}} 
+		\frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}}
+		\lbrack f(x)-f(\theta) \rbrack \, dx \\
+	\end{align*}
+}
+
+	De plus :
+	\begin{align*}
+		\frac{1}{2\pi} &\int_{\mathcolor{red}{{\left\lvert x - \theta \right\rvert} < \delta}} 
+		\frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}}
+		\lbrack f(x)-f(\theta) \rbrack \, dx \\
+			       &< \frac{\epsilon}{2\pi} \int_0^{2\pi}
+		\frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}} \, dx = \epsilon \\
+	\end{align*}
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+	Par ailleurs,
+	\begin{align}
+		\frac{1}{2\pi} &\int_{\mathcolor{red}{\delta \leq {\left\lvert x - \theta \right\rvert} \leq \pi}} 
+		\frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}}
+		\lbrack f(x)-f(\theta) \rbrack \, dx \\
+			       &\leq 2 {\left\lVert f \right\rVert}
+		\frac{1}{2\pi} \int_{\mathcolor{red}{\delta \leq {\left\lvert x - \theta \right\rvert} \leq \pi}} 
+		\frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}} \, dx \\
+			       &\leq \frac{{\left\lVert f \right\rVert}(1-r^{2})}{r(1-\cos\delta)} \label{eq:R}
+	\end{align}
+
+	La dernière inégalité vient de :  pour tout \(x,\theta \) satisfaisant \(\delta \leq {\left\lvert x - \theta \right\rvert} \leq \pi \),
+	\begin{equation*}
+		1 - 2r \cos(x-\theta) + r^{2} \geq 2r - 2r \cos \delta = 2r(1-\cos\delta)
+	\end{equation*}
+
+Le quotient \( (\ref{eq:R}) \) tend vers \( 0 \) lorsque \( r \) tend vers \( 1 \).
+
+On peut donc choisir un \( \mathcolor{blue}{r_1 < 1} \) et en remplaçant dans \( (\ref{eq:R}) \)
+\begin{equation*}
+	\frac{{\left\lVert f \right\rVert}(1-\mathcolor{blue}{r_1^{2}})}{\mathcolor{blue}{r_1}(1-\cos\delta)} < \epsilon
+\end{equation*}
+
+Ainsi pour tout \( \delta \) on a 
+\begin{equation*}
+	{\left\lvert f(\theta) - P(\mathcolor{blue}{r_1}, \theta) \right\rvert} < 2\epsilon
+\end{equation*}
+\end{frame}
 
 %------------------------------------------------
 \begin{frame}
@@ -379,10 +439,7 @@ Montrons que \( B_n \) converge uniformément vers \( f \) sur \( [0,1] \).
 
 Alors on a : 
 \begin{equation*}
-	0 \leq \overline{f}(x) - f(x) < \frac{\epsilon}{2}
-\end{equation*}
-\begin{equation*}
-	0 \leq f(x) - \underline{f}(x) < \frac{\epsilon}{2}
+	0 \leq \overline{f}(x) - f(x) < \frac{\epsilon}{2} \text{ et } 0 \leq f(x) - \underline{f}(x) < \frac{\epsilon}{2}
 \end{equation*}
 Pour \( \delta > 0  \) fixé, en posant :
 \begin{equation*}
@@ -392,21 +449,24 @@ Pour \( \delta > 0  \) fixé, en posant :
 On décompose \( B_n(x) \) en 
 \begin{align*}
 	B_n(x) &= \sum_{m=0}^{n} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m} \\
-	       &= \sum_{\{m \in \mathbb{N} \mid x - (m/n) \mathcolor{red}{\leq} \delta \}} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m} \\
-	       &+ \sum_{\{m \in \mathbb{N} \mid x - (m/n) \mathcolor{red}{>} \delta \}} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m} \\
+	       &= \sum_{\mathcolor{red}{\{m \in \mathbb{N} \mid x - (m/n) {\leq} \delta \}}} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m} \\
+	       &+ \sum_{\mathcolor{red}{\{m \in \mathbb{N} \mid x - (m/n) > \delta \}}} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m} \\
 \end{align*}
 \end{frame}
 %------------------------------------------------
 \begin{frame}
-	D'où 
+	D'où on obtient l'inégalité suivante 
 	\begin{equation}
 		\underline{f}(x)[1 - \eta_n(x)] - {\left\lVert f \right\rVert} \eta_n(x)
 		\leq B_n(x) \leq \overline{f}(x)[1-\eta_n(x)] + {\left\lVert f \right\rVert} \eta_n(x) \label{eq:E}
 	\end{equation}
-	D'après un résultat dû à Bernouilli que l'on admet (voir preuve dans \cite{pinkus2000approximation}), il existe un \( N \) tel que pour tout \( n > N \) et pour tout \( x \in [0,1] \) on a :
+	D'après un résultat dû à Bernouilli que l'on admet (preuve dans \cite{pinkus2000approximation}) :
+	\begin{lemme}
+	Il existe un \( N \in \mathbb{N} \) tel que pour tout \( n > N \) et pour tout \( x \in [0,1] \) on a :
 	\begin{equation}
-		\eta_n(x) < \frac{\epsilon}{4 {\left\lVert f \right\rVert}} \label{eq:B}
+		\eta_n(x) < \frac{\epsilon}{4 {\left\lVert f \right\rVert}} 
 	\end{equation}
+	\end{lemme}
 	En ajoutant \( f(x) - f(x) \) et en regroupant dans \( \eqref{eq:E} \) on a
 	{\footnotesize
 	\begin{equation*}
@@ -414,7 +474,8 @@ On décompose \( B_n(x) \) en
 		\eta_n(x) \lbrack {\left\lVert f \right\rVert} + \underline{f}(x)\rbrack 
 		\leq B_n(x) \leq f(x) + \lbrack \overline{f}(x) - f(x) \rbrack 
 	+ \eta_n(x) \lbrack {\left\lVert f \right\rVert}-\overline{f}(x) \rbrack
-	\end{equation*}}
+	\end{equation*}
+	}
 
 	Par conséquent, on obtient
 	\begin{equation*}
@@ -435,8 +496,7 @@ On décompose \( B_n(x) \) en
 	urlbordercolor=red
 	}
 \begin{frame} % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
-	\frametitle{Références}
-	
+	\frametitle{Références}	
 	\printbibliography
 	 % Beamer does not support BibTeX so references must be inserted manually as below, you may need to use multiple columns and/or reduce the font size further if you have many references
 
