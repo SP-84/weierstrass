@@ -20,6 +20,7 @@
 
 \documentclass[
 	10pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
+	xcolor={svgnames}
 	%t, % Uncomment to vertically align all slide content to the top of the slide, rather than the default centered
 	%aspectratio=169, % Uncomment to set the aspect ratio to a 16:9 ratio which matches the aspect ratio of 1080p and 4K screens and projectors
 ]{beamer}
@@ -28,15 +29,18 @@
 
 %\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule for better rules in tables
 %\usepackage{comment}
-
+%\usepackage{xcolor} % Already loaded by the beamer class, use mathcolor to highlight symbols
 \usepackage{mathtools}
-\usepackage{xcolor} % Use mathcolor to highlight symbols
-\usepackage[colorlinks, colorlinks=blue]{hyperref} % Use hyprlinks
+%\usepackage{hyperref} % Already loaded by the beamer class !
 %\usepackage{amssymb} % For \restriction command and math fonts, already in mathtools
 %\usepackage{enumitem} % Use Roman numbers in item enumeration
 %\usepackage{csquotes} % Use correct quotations marks 
-\usepackage[backend=biber, style=alphabetic]{biblatex} % Simple bibliography usage with biber
+\usepackage[backend=biber,backref=true,style=alphabetic]{biblatex} % Simple bibliography usage with biber, added citation page number with backref
 \addbibresource{weierstrass.bib}
+\DefineBibliographyStrings{english}{%
+	backrefpage  = {cité p.}, % for single page number
+	backrefpages = {cité pp.} % for multiple page numbers
+}
 
 \newtheorem{defi}[subsubsection]{Définition}
 \newtheorem{thm}[subsubsection]{Théorème}
@@ -169,7 +173,7 @@
 \date{} % Presentation date or conference/meeting name, the optional parameter can contain a shortened version to appear on the bottom of every slide, while the required parameter value is output to the title slide
 
 %----------------------------------------------------------------------------------------
-\renewcommand*{\bibfont}{\fontsize{8}{12}\selectfont}
+\renewcommand*{\bibfont}{\fontsize{8.5}{12}\selectfont}
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -258,9 +262,7 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 \begin{itemize}
 	\item Les étapes (\ref{item:i}) et (\ref{item:ii}) restent identiques.
 	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), ce qui permet de décomposer \( f \) en \( f = \Re(f) + i\Im(f) \) avec \( \Re(f) = \frac{f + \overline{f}}{2}\in A|_{\mathcal{C}(K,\mathbb{R})}, \Im(f) = \frac{f - \overline{f}}{2i} \in A|_{\mathcal{C}(K,\mathbb{R})} \) et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
-	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément 
-		
-		i.e. \( A \) est dense dans \( \mathcal{C}(K,\mathbb{C}) = \mathcal{C}(K,\mathbb{R}) + i\mathcal{C}(K,\mathbb{R}) \) (voir \cite{stephenson1968spaces})
+	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément i.e. \( A \) est dense dans \( \mathcal{C}(K,\mathbb{C}) = \mathcal{C}(K,\mathbb{R}) + i\mathcal{C}(K,\mathbb{R}) \) (cas particulier de \cite{stephenson1968spaces})
 
 \end{itemize}
 \end{frame}
@@ -290,7 +292,7 @@ On en déduit le théorème de Weierstrass trigonométrique : \( A \) est dense 
 \begin{frame}
 \frametitle{Preuve constructive à l'aide du noyau de Poisson}
 
-Picard démontre dans son \textit{Traité d'Analyse} (1891) le théorème de Weierstrass en utilisant le noyau de Poisson d'après \cite{pinkus2000approximation}.
+Picard démontre dans son \textit{Traité d'Analyse} (1891) le théorème de Weierstrass en utilisant le noyau de Poisson d'après \cite[p.~19-22]{pinkus2000approximation}.
  
 \begin{defi}[Noyau de Poisson, Intégrale de Poisson]
 	Soit \( \mathcal{D} \), \( \mathcal{S} \) le disque unité et la sphère unité de \( \mathbb{C} \) respectivement. Pour \( 0 \leq r \leq 1 \), on définit le noyau de Poisson sur \( \mathcal{S} \) par :
@@ -345,7 +347,7 @@ C'est un opérateur intégral défini sur \( \mathcal{C}([0,2\pi],\mathbb{R}) \)
 	\section{Preuve constructive à l'aide des polynômes de Bernstein}
 	\frametitle{Preuve constructive à l'aide des polynômes de Bernstein}
 
-	Cette preuve est dûe à Bernstein (1912/1913) d'après \cite{pinkus2000approximation}.
+	Cette preuve est dûe à Bernstein (1912/1913) d'après \cite[p.~ 42-45]{pinkus2000approximation}.
 	\begin{defi}[Polynôme de Bernstein de f]
 		Soit \( f \in \mathcal{C}([0,1],\mathbb{R}) \). Le polynôme de Bernstein de \( f \) est donné par :
 	\begin{equation*}
@@ -405,7 +407,16 @@ On décompose \( B_n(x) \) en
 	\begin{equation}
 		\eta_n(x) < \frac{\epsilon}{4 {\left\lVert f \right\rVert}} \label{eq:B}
 	\end{equation}
-	Par conséquent, en ajoutant \( f(x) - f(x) \) et en regroupant dans \( \eqref{eq:E} \) on a
+	En ajoutant \( f(x) - f(x) \) et en regroupant dans \( \eqref{eq:E} \) on a
+	{\footnotesize
+	\begin{equation*}
+	f(x) + \lbrack \underline{f}(x)-f(x)\rbrack - 
+		\eta_n(x) \lbrack {\left\lVert f \right\rVert} + \underline{f}(x)\rbrack 
+		\leq B_n(x) \leq f(x) + \lbrack \overline{f}(x) - f(x) \rbrack 
+	+ \eta_n(x) \lbrack {\left\lVert f \right\rVert}-\overline{f}(x) \rbrack
+	\end{equation*}}
+
+	Par conséquent, on obtient
 	\begin{equation*}
 		f(x)-\frac{\epsilon}{2} - 
 		\frac{\epsilon}{4 {\left\lVert f \right\rVert}} 2{\left\lVert f \right\rVert}
@@ -418,8 +429,11 @@ On décompose \( B_n(x) \) en
 	\end{equation*}
 	\end{frame}
 %------------------------------------------------
-
-
+\hypersetup{
+	pdfborder={0 0 1},
+	linkbordercolor=red,
+	urlbordercolor=red
+	}
 \begin{frame} % Use [allowframebreaks] to allow automatic splitting across slides if the content is too long
 	\frametitle{Références}
 	
