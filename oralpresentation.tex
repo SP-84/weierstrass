@@ -246,7 +246,7 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 \begin{frame}
 \begin{proof}[Schéma de la preuve]
 	\begin{enumerate}
-		\item On montre d'abord que \( t \mapsto \sqrt(t) \) est limite uniforme sur \( [0,1] \) d'une suite de polynômes de \( A \). \label{item:i}
+	\item On montre d'abord que \( t \mapsto \sqrt{t} \) est limite uniforme sur \( [0,1] \) d'une suite de polynômes de \( A \). \label{item:i}
 		\item Ensuite on prouve que \( A \) est clos sous le passage à la valeur absolue, au sup et à l'inf d'une famille de fonctions de \( A \). \label{item:ii}
 		\item On procède par interpolation à montrer l'existence d'un "élargissement" : pour \( f \in A, \forall x,y \in K, \forall \epsilon > 0, \exists g \in \overline{A} \) telle que \\\( g_{x}(x) = f(x) \) et \( g_{x}(y) \leq f(y) + \epsilon \). \label{item:iii}
 		\item On en déduit que \( \forall\epsilon > 0, \exists g \in \overline{A} \) telle que \( {\left\lVert f-g \right\rVert_{\infty}} \le \epsilon \), ce qui implique que \( f \in \overline{\overline{A}} = \overline{A} \). \label{item:iv}
@@ -262,7 +262,7 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 \begin{itemize}
 	\item Les étapes (\ref{item:i}) et (\ref{item:ii}) restent identiques.
 	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), ce qui permet de décomposer \( f \) en \( f = \Re(f) + i\Im(f) \) avec \( \Re(f) = \frac{f + \overline{f}}{2}\in A|_{\mathcal{C}(K,\mathbb{R})}, \Im(f) = \frac{f - \overline{f}}{2i} \in A|_{\mathcal{C}(K,\mathbb{R})} \) et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
-	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément i.e. \( A \) est dense dans \( \mathcal{C}(K,\mathbb{C}) = \mathcal{C}(K,\mathbb{R}) + i\mathcal{C}(K,\mathbb{R}) \) (cas particulier de \cite{stephenson1968spaces})
+	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément i.e. \( A \) est dense dans \( \mathcal{C}(K,\mathbb{C}) = \mathcal{C}(K,\mathbb{R}) \oplus i\mathcal{C}(K,\mathbb{R}) \) (cas particulier de \cite{stephenson1968spaces})
 
 \end{itemize}
 \end{frame}
@@ -270,15 +270,26 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 %------------------------------------------------
 
 \begin{frame}
+	%\frametitle{Remarque}
+
+	\center\includegraphics[page=2,width=12cm,trim={0 0 0 15.6cm},clip]{ste66.pdf}
+
+	\par Puisque \( \mathcal{C}(X,\mathbb{R}) \oplus i\mathcal{C}(X,\mathbb{R}) \cong \mathcal{C}(X,\mathbb{R}) \times i\mathcal{C}(X,\mathbb{R}) \), on peut aussi utiliser le théorème ci-dessus pour démontrer le résultat. \nocite{nlab:direct_sum_of_banach_spaces} 
+\end{frame}
+
+%------------------------------------------------
+
+
+\begin{frame}
 \subsection{Application directe aux séries de Fourier}
 \frametitle{Application directe aux séries de Fourier}
 
-\par Soit \( E = \mathbb{T} = [0,2\pi] \) le cercle unité compact de \( \mathbb{R} \), \(A = Vect(\{e^{inx}\}_{n \in \mathbb{Z}})\) est une base orthonormale de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \). Montrons que \( A \) vérifie les hypothèses du théorème :
+\par Soit \( E = \mathbb{T} = \mathbb{R}/2\pi\mathbb{R} \) le cercle unité compact de \( \mathbb{R} \), \(A = Vect(\{e^{inx}\}_{n \in \mathbb{Z}})\) est une base orthonormale de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \). Montrons que \( A \) vérifie les hypothèses du théorème :
 \begin{itemize}
 	\item A clos par \( +,\times,. \) donc est une sous-algèbre de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \)
 	\item A contient les constantes (\( e^{i.0.x} = 1) \)
 	\item \( \overline{e^{inx}} = e^{-inx} \in A \) car \( n \in \mathbb{Z} \)
-	\item Pour \( x1, x2 \in A \) distincts, il existe \( n \in \mathbb{Z} \) tel que 
+	\item Pour \( x1, x2 \in \mathbb{T} \) distincts, il existe \( n \in \mathbb{Z} \) tel que 
 		\( e^{inx1} \neq e^{inx2} \).
 \end{itemize}
 
@@ -295,7 +306,7 @@ On en déduit le théorème de Weierstrass trigonométrique : \( A \) est dense 
 Picard démontre dans son \textit{Traité d'Analyse} (1891) le théorème de Weierstrass en utilisant le noyau de Poisson d'après \cite[p.~19-22]{pinkus2000approximation}.
  
 \begin{defi}[Noyau de Poisson, Intégrale de Poisson]
-	Soit \( \mathcal{D} \), \( \mathcal{S} \) le disque unité et la sphère unité de \( \mathbb{C} \) respectivement. Pour \( 0 \leq r \leq 1 \), on définit le noyau de Poisson sur \( \mathcal{S} \) par :
+	Soit \( \mathcal{D} \), \( \mathcal{S} \) le disque unité et la sphère unité de \( \mathbb{C} \) respectivement. Pour \( 0 \leq r < 1 \), on définit le noyau de Poisson sur \( \mathcal{S} \) par :
 \begin{equation*}
 	K(r,\theta) = \frac{1 - r^{2}}{1-2r\cos(x-\theta)+r^{2}} = \Re(\frac{1 + re^{i\theta}}{1 - re^{i\theta}})
 \end{equation*}
@@ -385,7 +396,7 @@ Ainsi pour tout \( \delta \) on a
 		\sum_{n=1}^{\infty} r^{n} \left[ a_n \cos nx + b_n \sin nx \right]
 	\]
 
-	Puisque \( a_n \) et \( b_n \) sont uniformément bornées, \( S_{P(r,\theta)} \) converge uniformément vers \( P(r,\theta) \) pour tout \( r \le 1 \). Il existe alors \( m \in \mathbb{N} \) tel que pour tout \( \theta \) 
+	Puisque \( a_n \) et \( b_n \) sont uniformément bornées, \( S_{P(r,\theta)} \) converge uniformément vers \( P(r,\theta) \) pour tout \( r < 1 \). Il existe alors \( m \in \mathbb{N} \) tel que pour tout \( \theta \) 
 	\begin{equation*}
 		{\left\lvert P(r_1,\theta) - 
 		\lbrack \frac{a_0}{2} + \sum_{n=1}^{m} r_1^{n}(a_n \cos nx + b_n \sin nx) \rbrack \right\rvert} < \epsilon
@@ -460,9 +471,9 @@ On décompose \( B_n(x) \) en
 		\underline{f}(x)[1 - \eta_n(x)] - {\left\lVert f \right\rVert} \eta_n(x)
 		\leq B_n(x) \leq \overline{f}(x)[1-\eta_n(x)] + {\left\lVert f \right\rVert} \eta_n(x) \label{eq:E}
 	\end{equation}
-	D'après un résultat dû à Bernouilli que l'on admet (preuve dans \cite{pinkus2000approximation}) :
+	D'après un résultat dû à Bernoulli que l'on admet (preuve dans \cite{pinkus2000approximation}) :
 	\begin{lemme}
-	Il existe un \( N \in \mathbb{N} \) tel que pour tout \( n > N \) et pour tout \( x \in [0,1] \) on a :
+	Pour \( f \) non nulle, il existe un \( N \in \mathbb{N} \) tel que pour tout \( n > N \) et pour tout \( x \in [0,1] \) on a :
 	\begin{equation}
 		\eta_n(x) < \frac{\epsilon}{4 {\left\lVert f \right\rVert}} 
 	\end{equation}
