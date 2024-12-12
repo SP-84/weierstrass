@@ -262,7 +262,8 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 \begin{itemize}
 	\item Les étapes (\ref{item:i}) et (\ref{item:ii}) restent identiques.
 	\item Si \( f \in A \), alors son conjugué \( \overline{f} \in A \), ce qui permet de décomposer \( f \) en \( f = \Re(f) + i\Im(f) \) avec \( \Re(f) = \frac{f + \overline{f}}{2}\in A|_{\mathcal{C}(K,\mathbb{R})}, \Im(f) = \frac{f - \overline{f}}{2i} \in A|_{\mathcal{C}(K,\mathbb{R})} \) et d'apliquer le cas réel du théorème à \( \Re(f) \) et \( \Im(f) \).
-	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément i.e. \( A \) est dense dans \( \mathcal{C}(K,\mathbb{C}) = \mathcal{C}(K,\mathbb{R}) \oplus i\mathcal{C}(K,\mathbb{R}) \) (cas particulier de \cite{stephenson1968spaces})
+	\item Puisque \( A \) est clos par addition et multiplication par un scalaire \textit{complexe}, on peut combiner \( g = \Re(f) + i\Im(f) \) et avoir \( g \) dans \( A \). Ce \( g \) approxime bien \( f \) uniformément i.e. \( A \) est dense dans \( \mathcal{C}(K,\mathbb{C}) = \mathcal{C}(K,\mathbb{R}) \oplus i\mathcal{C}(K,\mathbb{R}) \)
+	\nocite{stephenson1968spaces}
 
 \end{itemize}
 \end{frame}
@@ -274,7 +275,9 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 
 	\center\includegraphics[page=2,width=12cm,trim={0 0 0 15.6cm},clip]{ste66.pdf}
 
-	\par Puisque \( \mathcal{C}(X,\mathbb{R}) \oplus i\mathcal{C}(X,\mathbb{R}) \cong \mathcal{C}(X,\mathbb{R}) \times i\mathcal{C}(X,\mathbb{R}) \), on peut aussi utiliser le théorème ci-dessus pour démontrer le résultat. \nocite{nlab:direct_sum_of_banach_spaces} 
+	\par Puisque \( \mathcal{C}(X,\mathbb{R}) \oplus i\mathcal{C}(X,\mathbb{R}) \) et \( \mathcal{C}(X,\mathbb{R}) \times i\mathcal{C}(X,\mathbb{R}) \) sont isomorphes, on peut aussi utiliser le théorème issu de \cite{stephenson1968spaces} pour démontrer le résultat. 
+	\nocite{nlab:direct_sum_of_banach_spaces}
+	\nocite{nlab:stone-weierstrass_theorem}
 \end{frame}
 
 %------------------------------------------------
@@ -284,7 +287,7 @@ alors \(\mathcal{C}(K,\mathbb{R}) \) est une algèbre de Banach.
 \subsection{Application directe aux séries de Fourier}
 \frametitle{Application directe aux séries de Fourier}
 
-\par Soit \( E = \mathbb{T} = \mathbb{R}/2\pi\mathbb{R} \) le cercle unité compact de \( \mathbb{R} \), \(A = Vect(\{e^{inx}\}_{n \in \mathbb{Z}})\) est une base orthonormale de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \). Montrons que \( A \) vérifie les hypothèses du théorème :
+\par Soit \( E = \mathbb{T} = \mathbb{R}/2\pi\mathbb{Z} \) le cercle unité compact de \( \mathbb{R} \), \(A = Vect\{e^{inx}\}_{n \in \mathbb{Z}}\) est une base orthonormale de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \). Montrons que \( A \) vérifie les hypothèses du théorème :
 \begin{itemize}
 	\item A clos par \( +,\times,. \) donc est une sous-algèbre de \( \mathcal{C}(\mathbb{T},\mathbb{C}) \)
 	\item A contient les constantes (\( e^{i.0.x} = 1) \)
@@ -454,7 +457,7 @@ Alors on a :
 \end{equation*}
 Pour \( \delta > 0  \) fixé, en posant :
 \begin{equation*}
-	\eta_n(x) = \sum_{\{m \in \mathbb{N} \mid x - (m/n) \leq \delta \}} f(\frac{m}{n}) \binom{n}{m} x^{m}(1-x)^{n-m}
+	\eta_n(x) = \sum_{\{m \in \mathbb{N} \mid x - (m/n) > \delta \}} \binom{n}{m} x^{m}(1-x)^{n-m}
 \end{equation*}
 
 On décompose \( B_n(x) \) en 
@@ -471,14 +474,14 @@ On décompose \( B_n(x) \) en
 		\underline{f}(x)[1 - \eta_n(x)] - {\left\lVert f \right\rVert} \eta_n(x)
 		\leq B_n(x) \leq \overline{f}(x)[1-\eta_n(x)] + {\left\lVert f \right\rVert} \eta_n(x) \label{eq:E}
 	\end{equation}
-	D'après un résultat dû à Bernoulli que l'on admet (preuve dans \cite{pinkus2000approximation}) :
+	En utilisant le lemme suivant :
 	\begin{lemme}
 	Pour \( f \) non nulle, il existe un \( N \in \mathbb{N} \) tel que pour tout \( n > N \) et pour tout \( x \in [0,1] \) on a :
-	\begin{equation}
+	\begin{equation} 
 		\eta_n(x) < \frac{\epsilon}{4 {\left\lVert f \right\rVert}} 
 	\end{equation}
 	\end{lemme}
-	En ajoutant \( f(x) - f(x) \) et en regroupant dans \( \eqref{eq:E} \) on a
+	En regroupant dans \( \eqref{eq:E} \) on a
 	{\footnotesize
 	\begin{equation*}
 	f(x) + \lbrack \underline{f}(x)-f(x)\rbrack - 
@@ -500,6 +503,57 @@ On décompose \( B_n(x) \) en
 		{\left\lvert B_n(x) - f(x) \right\rvert} < \epsilon
 	\end{equation*}
 	\end{frame}
+%------------------------------------------------
+\begin{frame}
+	\frametitle{Preuve du lemme}
+
+On a :
+\begin{align*}
+	\sum_{m=0}^{n} \binom{n}{m} x^{m}(1-x)^{n-m} = 1 \\
+	\sum_{m=0}^{n} \frac{m}{n} \binom{n}{m} x^{m}(1-x)^{n-m} = x
+\end{align*}
+
+De plus :
+\begin{equation*}
+	\sum_{m=0}^{n} \frac{m^{2}}{n^{2}} \binom{n}{m} x^{m}(1-x)^{n-m} = x^{2} + \frac{x(1-x)}{n}
+\end{equation*}
+
+Donc : 
+\begin{align*}
+	\eta_n(x) &= \sum_{\{m \in \mathbb{N} \mid x - (m/n) > \delta \}}  \binom{n}{m} x^{m}(1-x)^{n-m} \\
+	&\leq \sum_{\{m \in \mathbb{N} \mid x - (m/n) > \delta \}} (\frac{x-\frac{m}{n}}{\delta})^{2} \binom{n}{m} x^{m}(1-x)^{n-m}
+\end{align*}
+
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+
+\begin{align*}
+	\eta_n(x) &\leq \sum_{\{m \in \mathbb{N} \mid x - (m/n) > \delta \}} \left( \frac{x-\frac{m}{n}}{\delta} \right )^{2} \binom{n}{m} x^{m}(1-x)^{n-m} \\
+		  &\leq \frac{1}{\delta^{2}} \sum_{m=0}^{n} \left( x-\frac{m}{n} \right)^{2} \binom{n}{m} x^{m}(1-x)^{n-m} \\
+		  &= \frac{1}{\delta^{2}} \bigl( x^{2}-2x.x+x^{2}+\frac{x(1-x)}{n} \bigr) \\
+		  &= \frac{x(1-x)}{n\delta^{2}} \\
+		  &\leq \frac{1}{4n\delta^{2}}
+\end{align*}
+
+Pour chaque \( \delta > 0 \) fixé on peut choisir \( N \in \mathbb{N} \) tel que pour tout \( n \geq N \) et tout \( x \in [0,1] \) :
+
+\begin{equation*}
+	\eta_n(x) < \frac{\epsilon}{4 {\left\lVert f \right\rVert}} 
+\end{equation*}
+
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+	\frametitle{Remarques}
+
+	Il existe de nombreuses preuves du théorème de Weierstrass comme celle utilisant le théorème de Fejér et la moyenne de Cesàro vue en cours, ou encore celles de de La Vallée Poussin, Landau, Lebesgue ...
+
+	Dans \cite[p.~ 60-61]{pinkus2000approximation} une preuve due à Kuhn (1964) utilise seulement l'inégalité de Bernouilli sans autres résultats sur les séries de Fourier ou sur les intégrales.
+\end{frame}
+
 %------------------------------------------------
 \hypersetup{
 	pdfborder={0 0 1},
